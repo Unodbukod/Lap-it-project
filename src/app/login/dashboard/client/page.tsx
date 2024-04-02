@@ -4,10 +4,18 @@ import { getServerSession } from 'next-auth';
 import React from 'react';
 import SignoutButton from '../components/signoutbutton';
 
+
+// Triaged, use ternary operator, and create a separate component for nav bar and wrap it inside the layout.tsx
 const page = async () => {
 
   const session = await getServerSession(authOptions);
   console.log(session);
+
+  // session ? (
+  //   <div></div>
+  // ) : (
+
+  // ) // use ternary operators 
 
   if (session?.user){
   return (
@@ -17,9 +25,9 @@ const page = async () => {
         <div className='transform'>
         <img src="/person1.svg" alt="" />
         </div>
-        <div className="mt-10">
+        <div className="mt-10"> 
           <p className="mb-4 text-gray-600">Welcome, <strong>{session?.user.companyName}</strong>!</p>
-          <ul className="space-y-2">
+          <ul className="space-y-2"> 
             <li>
               <a href="#" className="flex items-center p-2 space-x-3 text-gray-700 rounded-md hover:bg-gray-200">
                 <span>Home</span>
@@ -46,7 +54,7 @@ const page = async () => {
     </div>
   );
 }
-  return <h2> Please Login First to see this page <a href="/login/signin">Sign In</a></h2>;
+ return <h2> Please Login First to see this page <a href="/login/signin">Sign In</a></h2>;
 };
 
 export default page;

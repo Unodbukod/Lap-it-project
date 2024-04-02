@@ -1,6 +1,9 @@
 import React from "react";
 import Card from "./card";
 
+// triaged, if an array has the same type as the component, assert the type
+
+
 const Features = () => {
   const card = [
     { title: "Registration", description: "Lorem ipsum dolor sit amet consectetur sodales.", iconSrc: "/identification.svg" },

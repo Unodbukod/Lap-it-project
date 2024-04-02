@@ -1,6 +1,21 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { UserInfo } from "os";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from 'zod'
 
+
+// Triaged, refactor using hookform, array maps, and resolvers.
+
+
+// const userInfo = z.object({
+//   companyName: z.string().min(1, { message: 'minimum character must be > 1'}),
+//   email: z.string().min(1, { message: 'minimum character must be > 1'}),
+//   contactPerson: z.string().min(1, { message: 'minimum character must be > 1'}),
+//   contactNumber: z.string().min(1, { message: 'minimum character must be > 1'}),
+//   companyAddress: z.string().min(1, { message: 'minimum character must be > 1'}),
+// })
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
     companyName: "",
@@ -8,7 +23,25 @@ const SignUpPage = () => {
     contactPerson: "",
     contactNumber: "",
     companyAddress: "",
-  });
+  }); // hook-form with zod resolver
+
+  // const {
+  //   handleSubmit,
+  //   reset,
+  //   watch,
+    
+  // } = useForm({
+  //   defaultValues: {
+  //     companyName: "",
+  //   email: "",
+  //   contactPerson: "",
+  //   contactNumber: "",
+  //   companyAddress: "",
+  //   },
+  //   mode: 'onChange',
+  //   resolver: zodResolver(userInfo)
+  // })
+
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -16,7 +49,7 @@ const SignUpPage = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormSubmitted(true);
     setErrorMessage(null);
@@ -76,14 +109,14 @@ const SignUpPage = () => {
               Your Journey Starts Here - Get Started
             </p>
             <form
-              onSubmit={handleSubmit}
+              onSubmit={onSubmit}
               className="pb-20 pl-28 text-xs items-center"
             >
               <div className="mb-4 w-9/12">
                 <input
                   type="text"
                   placeholder="Company Name"
-                  name="companyName"
+                  name='Company Name'
                   className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                   value={formData.companyName}
                   onChange={handleChange}

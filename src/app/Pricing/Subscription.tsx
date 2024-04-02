@@ -1,5 +1,7 @@
 import React from "react";
 
+
+// Triaged, use array map
 const Subscription = () => {
   return (
     <div className="py-10 px-10 2xl:max-container relative flex flex-row items-center justify-center ">

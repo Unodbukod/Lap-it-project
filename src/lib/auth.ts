@@ -22,17 +22,17 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.username || !credentials?.password) {
-          console.error("Credentials are missing or incomplete.");
+          console.error("Credentials are missing or incomplete."); // user information does not exist 
           return null;
         }
 
-        console.log("Received credentials:", credentials);
+        console.log("Received credentials:", credentials); // suggest to remove
 
         const existingUser = await db.user.findUnique({
           where: { username: credentials.username },
         });
 
-        console.log("Existing user:", existingUser);
+        console.log("Existing user:", existingUser); // remove
 
         if (!existingUser) {
           console.log("User not found.");

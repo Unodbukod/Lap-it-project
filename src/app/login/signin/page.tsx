@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 
+// Triaged, use Snackbar for notification alerts
 const schema = z.object({
   username: z.string(),
   password: z.string().min(8),

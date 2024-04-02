@@ -1,4 +1,4 @@
-
+'use client';
 import React from 'react';
 import { Poppins } from 'next/font/google';
 import Navbar from '../components/navbar';
@@ -14,6 +14,7 @@ const poppins_init = Poppins({
 
 
 const Pricing = () => {
+
   return (
     <><Navbar />s
     <div className=''>
